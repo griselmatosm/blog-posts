@@ -4,5 +4,5 @@ import getData from '../services/getDataFromApi';
 //como parámatros dispatch y getState (en este caso no necesitamos el estado)
 export const fetchPosts = () => async (dispatch) => {
   const response = await getData.get('/posts');
-  dispatch({ type: 'FETCH_POSTS', payload: response });
+  dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
