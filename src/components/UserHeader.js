@@ -8,7 +8,7 @@ class UserHeader extends React.Component {
   }
 
   render() {
-    const user = this.props.users.find((user) => user.id === this.props.userId);
+    const { user } = this.props;
 
     if (!user) {
       return <div>Loading...</div>;
@@ -17,9 +17,9 @@ class UserHeader extends React.Component {
     return <div className="header">{user.name} </div>;
   }
 }
-
-const mapStateToProps = (state) => {
-  return { users: state.users };
+// ownProps es una referencia de las props que se reciben dentro del componente de clase
+const mapStateToProps = (state, ownProps) => {
+  return { user: state.users.find((user) => user.id === ownProps.userId) };
 };
 
 export default connect(mapStateToProps, { fetchUser })(UserHeader);
