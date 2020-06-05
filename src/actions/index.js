@@ -6,15 +6,14 @@ import getData from '../services/getDataFromApi';
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   await dispatch(fetchPosts());
 
-  const userIds = _.uniq(_.map(getState().posts, 'userId')) 
-  userIds.forEach(id => dispatch(fetchUser(id)))
+  const userIds = _.uniq(_.map(getState().posts, 'userId'));
+  userIds.forEach((id) => dispatch(fetchUser(id)));
 
   //_.map creates an array of values by running each element in collection thru iteratee
 
-  // _.uniq creates a duplicate-free version of an array, using SameValueZero for equality comparisons, 
-  //in which only the first occurrence of each element is kept. 
+  // _.uniq creates a duplicate-free version of an array, using SameValueZero for equality comparisons,
+  //in which only the first occurrence of each element is kept.
   //The order of result values is determined by the order they occur in the array.
-
 };
 
 //al usar redux-thunk en action creators asíncronos la función del fetch retorna otra función que recibe
